@@ -55,7 +55,7 @@ def build_preprocessor(drop_features=(), scale=True, impute=True) -> ColumnTrans
     cat_steps = []
     if impute:
         cat_steps.append(("impute", SimpleImputer(strategy="most_frequent")))
-    cat_steps.append(("onehot", OneHotEncoder(handle_unknown="ignore")))
+    cat_steps.append(("onehot", OneHotEncoder(handle_unknown="ignore", sparse_output=False)))
 
     bin_pipe = (
         Pipeline([("impute", SimpleImputer(strategy="most_frequent"))])
